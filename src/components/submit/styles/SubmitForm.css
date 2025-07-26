@@ -1,0 +1,144 @@
+@import "../../data/styles.css";
+
+/* Logo */
+.submit-logo-container {
+	display: flex;
+	justify-content: left;
+	padding-top: 25px;
+}
+
+.submit-logo {
+	display: flex;
+	position: fixed;
+	border: 1px solid white;
+	border-radius: 50%;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	top: 4vh;
+}
+
+/* Container utama */
+.submit-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin: 0;
+	padding-top: 120px;
+}
+
+.submit-main {
+	display: flex;
+}
+
+/* Kolom kanan: form */
+.submit-right-side {
+	flex-basis: 900px;
+}
+
+.submit-title {
+	width: 100% !important;
+}
+
+.submit-subtitle {
+	width: 80% !important;
+}
+
+/* Kolom kiri: gambar */
+.submit-left-side {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 300px;
+}
+
+.submit-image-container {
+	width: 370px;
+}
+
+.submit-image-wrapper {
+	display: inline-block;
+	overflow: hidden;
+	width: 100%;
+	border-radius: 10%;
+	transform: rotate(3deg);
+}
+
+.submit-image-wrapper img {
+	display: block;
+	width: 100%;
+}
+
+/* Form */
+.submit-form {
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+}
+
+.submit-form input,
+.submit-form textarea {
+	padding: 12px 16px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-family: var(--primary-font);
+	font-size: 14px;
+}
+
+.submit-form textarea {
+	resize: vertical;
+	min-height: 120px;
+}
+
+.submit-form button {
+	padding: 12px 16px;
+	background-color: var(--primary-color);
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	transition: background-color 0.3s ease;
+}
+
+.submit-form button:hover {
+	background-color: var(--link-color);
+}
+
+/* Responsif */
+@media (max-width: 1024px) {
+	.submit-logo {
+		z-index: 100;
+	}
+
+	.submit-main {
+		flex-direction: column;
+	}
+
+	.submit-subtitle {
+		padding-top: 20px !important;
+	}
+
+	.submit-left-side {
+		flex-basis: 100%;
+		order: 1;
+	}
+
+	.submit-right-side {
+		flex-basis: 100%;
+		order: 2;
+	}
+
+	.submit-image-container {
+		padding-bottom: 40px;
+	}
+}
+
+@media (max-width: 600px) {
+	.submit-container {
+		padding-top: 60px;
+	}
+
+	.submit-image-container {
+		width: 80%;
+	}
+}

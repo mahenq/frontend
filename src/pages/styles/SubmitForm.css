@@ -1,0 +1,142 @@
+/* SubmitForm.css */
+.submit-logo-container {
+	display: flex;
+	justify-content: left;
+	padding-top: 25px;
+}
+
+.submit-logo {
+	display: flex;
+	position: fixed;
+	border: 1px solid white;
+	border-radius: 50%;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	top: 4vh;
+	z-index: 999;
+}
+
+.submit-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin: 0;
+	padding-top: 120px;
+}
+
+.submit-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-bottom: 20px;
+	color: inherit;
+	line-height: 1.2;
+}
+
+.submit-subtitle {
+	font-size: 1.1rem;
+	line-height: 1.6;
+	margin-bottom: 40px;
+	color: inherit;
+	opacity: 0.8;
+}
+
+.submit-form-container {
+	max-width: 600px;
+	width: 100%;
+}
+
+.submit-form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.submit-form input,
+.submit-form textarea {
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	font-size: 16px;
+	transition: border-color 0.3s ease;
+	background-color: white;
+}
+
+.submit-form input:focus,
+.submit-form textarea:focus {
+	outline: none;
+	border-color: #007bff;
+	box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.submit-form input:disabled,
+.submit-form textarea:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	background-color: #f8f9fa;
+}
+
+.submit-form button {
+	padding: 15px 30px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 10px;
+}
+
+.submit-form button:hover:not(:disabled) {
+	background-color: #0056b3;
+}
+
+.submit-form button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.success-message {
+	color: #28a745;
+	margin-top: 20px;
+	font-weight: 500;
+	padding: 10px;
+	background-color: #d4edda;
+	border: 1px solid #c3e6cb;
+	border-radius: 5px;
+}
+
+.error-message {
+	color: #dc3545;
+	margin-top: 20px;
+	font-weight: 500;
+	padding: 10px;
+	background-color: #f8d7da;
+	border: 1px solid #f5c6cb;
+	border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+	.submit-container {
+		padding-top: 60px;
+	}
+
+	.submit-title {
+		font-size: 2rem;
+	}
+
+	.submit-subtitle {
+		font-size: 1rem;
+	}
+
+	.submit-form-container {
+		max-width: 100%;
+	}
+
+	.submit-form input,
+	.submit-form textarea,
+	.submit-form button {
+		padding: 12px;
+		font-size: 14px;
+	}
+}

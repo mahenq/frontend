@@ -1,0 +1,128 @@
+/* AdminLogin.css */
+.adminlogin-logo-container {
+	display: flex;
+	justify-content: left;
+	padding-top: 25px;
+}
+
+.adminlogin-logo {
+	display: flex;
+	position: fixed;
+	border: 1px solid white;
+	border-radius: 50%;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	top: 4vh;
+	z-index: 999;
+}
+
+.adminlogin-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin: 0;
+	padding-top: 120px;
+}
+
+.adminlogin-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-bottom: 20px;
+	color: inherit;
+	line-height: 1.2;
+}
+
+.adminlogin-subtitle {
+	font-size: 1.1rem;
+	line-height: 1.6;
+	margin-bottom: 40px;
+	color: inherit;
+	opacity: 0.8;
+}
+
+.adminlogin-form-container {
+	max-width: 400px;
+	width: 100%;
+}
+
+.adminlogin-form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.adminlogin-form input {
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	font-size: 16px;
+	transition: border-color 0.3s ease;
+	background-color: white;
+}
+
+.adminlogin-form input:focus {
+	outline: none;
+	border-color: #007bff;
+	box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.adminlogin-form input:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	background-color: #f8f9fa;
+}
+
+.adminlogin-form button {
+	padding: 15px 30px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 10px;
+}
+
+.adminlogin-form button:hover:not(:disabled) {
+	background-color: #0056b3;
+}
+
+.adminlogin-form button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.error-message {
+	color: #dc3545;
+	margin-top: 20px;
+	font-weight: 500;
+	padding: 10px;
+	background-color: #f8d7da;
+	border: 1px solid #f5c6cb;
+	border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+	.adminlogin-container {
+		padding-top: 60px;
+	}
+
+	.adminlogin-title {
+		font-size: 2rem;
+	}
+
+	.adminlogin-subtitle {
+		font-size: 1rem;
+	}
+
+	.adminlogin-form-container {
+		max-width: 100%;
+	}
+
+	.adminlogin-form input,
+	.adminlogin-form button {
+		padding: 12px;
+		font-size: 14px;
+	}
+}

@@ -1,0 +1,78 @@
+/* File: src/admin/styles/admin.css */
+
+.page-content {
+	padding: 40px;
+	font-family: var(--primary-font);
+}
+
+.admin-title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 30px;
+	color: var(--primary-color);
+}
+
+.admin-list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.admin-card {
+	background-color: #f8f8f8;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.admin-info p {
+	margin: 5px 0;
+	color: var(--secondary-color);
+}
+
+.admin-actions {
+	margin-top: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.admin-actions label {
+	font-size: 14px;
+	color: #333;
+	display: flex;
+	flex-direction: column;
+}
+
+.admin-actions input,
+.admin-actions select {
+	padding: 6px 10px;
+	margin-top: 5px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	font-size: 14px;
+}
+
+.admin-btns {
+	display: flex;
+	gap: 10px;
+}
+
+.admin-btns button {
+	padding: 6px 14px;
+	border: none;
+	border-radius: 6px;
+	background-color: var(--link-color);
+	color: white;
+	cursor: pointer;
+	font-weight: 600;
+	transition: background-color 0.2s;
+}
+
+.admin-btns button.delete {
+	background-color: #dc3545;
+}
+
+.admin-btns button:hover {
+	opacity: 0.9;
+}
