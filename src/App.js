@@ -15,7 +15,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import SubmitForm from "./pages/SubmitForm";
 
 import { TRACKING_ID } from "./data/tracking";
-import "./app.css";
+import "./App.css";
 
 function App() {
   useEffect(() => {
