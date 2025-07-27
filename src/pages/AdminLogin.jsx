@@ -13,7 +13,7 @@ import SEO from "../data/seo";
 import "./styles/adminLogin.css";
 
 const AdminLogin = () => {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
