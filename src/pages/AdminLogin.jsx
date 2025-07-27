@@ -87,7 +87,7 @@ export default function AdminLogin() {
           {error && <p className="login-error">{error}</p>}
           <form onSubmit={handleSubmit} className="login-form">
             <input
-              type="email"
+              type="text"
               name="email"
               placeholder="Email"
               value={formData.email}
@@ -96,7 +96,7 @@ export default function AdminLogin() {
               disabled={isLoading}
             />
             <input
-              type="password"
+              type="text"
               name="password"
               placeholder="Password"
               value={formData.password}
