@@ -37,7 +37,7 @@ const AdminLogin = () => {
 
     try {
       const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-      const res = await axios.post(`${API_URL}/api/admin/login`, formData);
+      const res = await axios.post(`${API_URL}/api/admins/login`, formData);
       localStorage.setItem("token", res.data.token);
       navigate("/admin");
     } catch (err) {
