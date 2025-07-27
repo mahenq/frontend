@@ -27,7 +27,7 @@ export default function AdminLogin() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/admin/login`,
+        `${process.env.REACT_APP_API_URL}/api/admins/login`,
         formData
       );
       localStorage.setItem("token", res.data.token);
