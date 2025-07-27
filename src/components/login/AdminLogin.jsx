@@ -10,7 +10,7 @@ import SEO from "../data/seo";
 import "./styles/admin.css";
 
 export default function AdminLogin() {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
   useEffect(() => {
