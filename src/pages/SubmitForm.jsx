@@ -1,4 +1,3 @@
-// File: src/pages/Submit.jsx
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import axios from "axios";
@@ -11,15 +10,15 @@ import SEO from "../data/seo";
 
 import "./styles/SubmitForm.css";
 
-const Submit = () => {
+const SubmitForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
   const [success, setSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -29,7 +28,6 @@ const Submit = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // Clear success and error messages when user starts typing
     if (success) setSuccess(false);
     if (error) setError("");
   };
@@ -42,14 +40,17 @@ const Submit = () => {
 
     try {
       const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-      await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/customers`,
-        formData
-      );
+      await axios.post(`${API_URL}/api/customers`, formData);
+
+      setSuccess(true);
       setFormData({ name: "", email: "", message: "" });
+
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
     } catch (err) {
-      setError("Gagal mengirim pesan. Silakan coba lagi.");
       console.error("Gagal mengirim pesan:", err);
+      setError("Gagal mengirim pesan. Silakan coba lagi.");
     } finally {
       setIsLoading(false);
     }
@@ -74,60 +75,80 @@ const Submit = () => {
               <Logo width={46} />
             </div>
           </div>
+
           <div className="submit-container">
-            <div className="title submit-title">
-              Let's discuss your project and bring your ideas to life.
-            </div>
+            <div className="submit-main">
+              <div className="submit-right-side">
+                <div className="title submit-title">Diskusikan Proyek Anda</div>
 
-            <div className="subtitle submit-subtitle">
-              I'm always excited to work on new projects and collaborate with
-              clients to create something amazing. Whether you have a clear
-              vision or just an idea that needs to be developed, I'm here to
-              help you turn it into reality. Please fill out the form below and
-              let's start the conversation about your project.
-            </div>
+                <div className="subtitle submit-subtitle">
+                  Silakan isi formulir di bawah ini. Saya akan menghubungi Anda
+                  secepat mungkin.
+                </div>
 
-            <div className="submit-form-container">
-              <form onSubmit={handleSubmit} className="submit-form">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Nama"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  disabled={isLoading}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  disabled={isLoading}
-                />
-                <textarea
-                  name="message"
-                  placeholder="Pesan"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  disabled={isLoading}
-                  style={{ minHeight: "120px" }}
-                />
-                <button type="submit" disabled={isLoading}>
-                  {isLoading ? "Mengirim..." : "Kirim"}
-                </button>
-              </form>
+                <form className="submit-form" onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Nama Anda"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    disabled={isLoading}
+                  />
 
-              {success && (
-                <p className="success-message">Pesan berhasil dikirim!</p>
-              )}
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Anda"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    disabled={isLoading}
+                  />
 
-              {error && <p className="error-message">{error}</p>}
+                  <textarea
+                    name="message"
+                    placeholder="Pesan Anda"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    disabled={isLoading}
+                  ></textarea>
+
+                  <button type="submit" disabled={isLoading}>
+                    {isLoading ? "Mengirim..." : "Kirim Pesan"}
+                  </button>
+
+                  {success && (
+                    <p className="success-message">Pesan berhasil dikirim!</p>
+                  )}
+
+                  {error && (
+                    <p
+                      className="error-message"
+                      style={{ color: "red", marginTop: "10px" }}
+                    >
+                      {error}
+                    </p>
+                  )}
+                </form>
+              </div>
+
+              <div className="submit-left-side">
+                <div className="submit-image-container">
+                  <div className="submit-image-wrapper">
+                    <img
+                      src="/contact.jpg"
+                      alt="contact"
+                      className="submit-image"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
           <div className="page-footer">
             <Footer />
           </div>
@@ -137,4 +158,4 @@ const Submit = () => {
   );
 };
 
-export default Submit;
+export default SubmitForm;

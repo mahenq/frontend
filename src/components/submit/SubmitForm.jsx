@@ -16,7 +16,9 @@ const SubmitForm = () => {
     email: "",
     message: "",
   });
-  const [messageSent, setMessageSent] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,21 +28,31 @@ const SubmitForm = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (success) setSuccess(false);
+    if (error) setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
+    setSuccess(false);
 
     try {
-      await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/customers`,
-        formData
-      );
-      setMessageSent(true);
+      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+      await axios.post(`${API_URL}/api/customers`, formData);
+
+      setSuccess(true);
       setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      console.error("Gagal mengirim pesan:", error);
-      alert("Gagal mengirim pesan.");
+
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    } catch (err) {
+      console.error("Gagal mengirim pesan:", err);
+      setError("Gagal mengirim pesan. Silakan coba lagi.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -48,8 +60,11 @@ const SubmitForm = () => {
     <React.Fragment>
       <Helmet>
         <title>{`Submit | ${INFO.main.title}`}</title>
-        <meta name="description" content={currentSEO.description} />
-        <meta name="keywords" content={currentSEO.keywords.join(", ")} />
+        <meta name="description" content={currentSEO?.description || ""} />
+        <meta
+          name="keywords"
+          content={currentSEO?.keywords?.join(", ") || ""}
+        />
       </Helmet>
 
       <div className="page-content">
@@ -79,6 +94,7 @@ const SubmitForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    disabled={isLoading}
                   />
 
                   <input
@@ -88,6 +104,7 @@ const SubmitForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    disabled={isLoading}
                   />
 
                   <textarea
@@ -96,18 +113,23 @@ const SubmitForm = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    disabled={isLoading}
                   ></textarea>
 
-                  <button type="submit">Kirim Pesan</button>
+                  <button type="submit" disabled={isLoading}>
+                    {isLoading ? "Mengirim..." : "Kirim Pesan"}
+                  </button>
 
-                  {messageSent && (
+                  {success && (
+                    <p className="success-message">Pesan berhasil dikirim!</p>
+                  )}
+
+                  {error && (
                     <p
-                      style={{
-                        color: "green",
-                        marginTop: "10px",
-                      }}
+                      className="error-message"
+                      style={{ color: "red", marginTop: "10px" }}
                     >
-                      Pesan berhasil dikirim!
+                      {error}
                     </p>
                   )}
                 </form>
