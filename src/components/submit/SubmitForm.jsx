@@ -137,13 +137,7 @@ const SubmitForm = () => {
 
               <div className="submit-left-side">
                 <div className="submit-image-container">
-                  <div className="submit-image-wrapper">
-                    <img
-                      src="/contact.jpg"
-                      alt="contact"
-                      className="submit-image"
-                    />
-                  </div>
+                  <div className="submit-image-wrapper"></div>
                 </div>
               </div>
             </div>
