@@ -33,7 +33,7 @@ const SubmitForm = () => {
 
     try {
       await axios.post(
-        "${process.env.REACT_APP_API_URL}/api/customers",
+        `${process.env.REACT_APP_API_URL}/api/customers`,
         formData
       );
       setMessageSent(true);
