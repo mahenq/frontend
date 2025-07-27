@@ -59,7 +59,7 @@ export default function AdminLogin() {
           <form onSubmit={handleSubmit} className="login-form">
             <input
               type="text"
-              name="username"
+              name="email"
               placeholder="Username"
               onChange={handleChange}
               required
