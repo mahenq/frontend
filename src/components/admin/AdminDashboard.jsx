@@ -15,7 +15,7 @@ const AdminDashboard = () => {
   const fetchCustomers = async () => {
     try {
       const res = await axios.get(
-        "${process.env.REACT_APP_API_URL}/api/customers",
+        `${process.env.REACT_APP_API_URL}/api/customers`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
